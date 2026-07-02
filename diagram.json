@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "Yoni Muhamd Nizar",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht", "top": -120, "left": 250, "attrs": { "temperature": "28", "humidity": "60" } },
+    { "type": "wokwi-led", "id": "ledGreen", "top": 110, "left": 260, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "ledRed", "top": 165, "left": 260, "attrs": { "color": "red" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 220, "left": 250, "attrs": { "volume": "0.1" } }
+  ],
+  "connections": [
+    [ "esp:3V3", "dht:VCC", "red", [] ],
+    [ "esp:GND.1", "dht:GND", "black", [] ],
+    [ "esp:D15", "dht:SDA", "green", [] ],
+
+    [ "esp:D26", "ledGreen:A", "green", [] ],
+    [ "ledGreen:C", "esp:GND.2", "black", [] ],
+
+    [ "esp:D27", "ledRed:A", "red", [] ],
+    [ "ledRed:C", "esp:GND.2", "black", [] ],
+
+    [ "esp:D25", "buzzer:1", "purple", [] ],
+    [ "buzzer:2", "esp:GND.2", "black", [] ]
+  ],
+  "serialMonitor": { "display": "terminal", "newline": "lf" }
+}
